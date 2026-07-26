@@ -49,7 +49,6 @@ class MainWindow(QMainWindow):
         for label in ["Cover", "Editor", "Quiz Engine", "About"]:
             self.nav.addItem(QListWidgetItem(label))
         self.nav.currentRowChanged.connect(self._switch_page)
-        self.nav.setCurrentRow(0)
 
         self.stack = QStackedWidget()
         self.cover_page = self._build_cover_page()
@@ -65,6 +64,7 @@ class MainWindow(QMainWindow):
         root_layout.addWidget(self.nav)
         root_layout.addWidget(self.stack)
         self.setCentralWidget(root)
+        self.nav.setCurrentRow(0)
 
         self._apply_theme()
         self._refresh_cover()
